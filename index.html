@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HOTEL RELAX</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background: #1a1816;
+      color: #f5e9c8;
+    }
+
+    header {
+      background: linear-gradient(90deg, #3d2c13, #b8860b);
+      padding: 30px;
+      color: #ffe082;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(61,44,19,0.3);
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 18px;
+    }
+
+    .tab-button {
+      padding: 12px 26px;
+      border: 2px solid #b8860b;
+      border-radius: 50px;
+      background: #f5e9c8;
+      color: #3d2c13;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .tab-button:hover {
+      background: #ffe082;
+      color: #3d2c13;
+    }
+
+    .tab-button.active {
+      background: #b8860b;
+      color: #fff;
+      border-color: #ffe082;
+    }
+
+    .content {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .content.active {
+      display: flex;
+    }
+
+    .card {
+      background: #2d2417;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(184,134,11,0.12);
+      overflow: hidden;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #b8860b;
+    }
+
+    .card-body {
+      padding: 15px;
+      flex-grow: 1;
+    }
+
+    .card-body h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #ffe082;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .price {
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 17px;
+      margin: 8px 0;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      color: #f5e9c8;
+    }
+
+    .size-select {
+      margin-top: 10px;
+      font-size: 14px;
+      width: 100%;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .size-toggle-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .size-toggle {
+      appearance: none;
+      background: #f5e9c8;
+      color: #3d2c13;
+      border: 2px solid #b8860b;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .size-toggle:checked {
+      background: #b8860b;
+      color: #fff;
+      border-color: #ffe082;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .size-toggle-group {
+          display: flex;
+          gap: 8px;
+          margin-top: 10px;
+     }
+     .size-toggle {
+          display: none;
+     }
+     .size-toggle + label {
+          background: #f5e9c8;
+          color: #3d2c13;
+          border: 2px solid #b8860b;
+          border-radius: 20px;
+          padding: 6px 16px;
+          font-size: 14px;
+          font-family: inherit;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background 0.2s, color 0.2s;
+          user-select: none;
+          display: inline-block;
+     }
+     .size-toggle:checked + label {
+          background: #b8860b;
+          color: #fff;
+          border-color: #ffe082;
+     }
+  </style>
+</head>
+<body>
+
+  <header>HOTEL RELAX BEER BAR & PERMIT ROOMS</header>
+
+  <div class="tabs">
+    <button class="tab-button active" onclick="showTab('veg')">Veg</button>
+    <button class="tab-button" onclick="showTab('nonveg')">Non-Veg</button>
+    <button class="tab-button" onclick="showTab('drinks')">Drinks</button>
+  </div>
+
+  <div id="veg" class="content active">
+    <div class="card">
+      <img src="https://i.imgur.com/XVZNm2c.jpg" alt="Paneer Butter Masala">
+      <div class="card-body">
+        <h3>Paneer Butter Masala</h3>
+        <div class="price">₹220</div>
+        <p>Rich, creamy and mildly spiced tomato-based curry.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/tYl3Kmn.jpg" alt="Veg Biryani">
+      <div class="card-body">
+        <h3>Veg Biryani</h3>
+        <div class="price">₹180</div>
+        <p>Fragrant rice cooked with fresh veggies and spices.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="nonveg" class="content">
+    <div class="card">
+      <img src="https://i.imgur.com/Do4lzLy.jpg" alt="Chicken Curry">
+      <div class="card-body">
+        <h3>Chicken Curry</h3>
+        <div class="price">₹260</div>
+        <p>Spicy and flavorful chicken in a traditional gravy.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/EMiYcgo.jpg" alt="Mutton Rogan Josh">
+      <div class="card-body">
+        <h3>Mutton Rogan Josh</h3>
+        <div class="price">₹320</div>
+        <p>Kashmiri-style dish with rich red gravy and tender meat.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="drinks" class="content">
+    <div class="card">
+      <img src="royalstagg.jpg" alt="Royal Stag">
+      <div class="card-body">
+        <h3>Royal Stag</h3>
+        <select class="size-select">
+          <option value="130">90 ml</option>
+          <option value="260">180 ml</option>
+        </select>
+        <div class="price">₹90</div>
+        <p>Sweet mango yogurt drink, chilled and refreshing.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="oldmonk.jpg" alt="Old Monk">
+      <div class="card-body">
+        <h3>Old Monk</h3>
+        <select class="size-select">
+          <option value="100">90 ml</option>
+          <option value="200">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Blended coffee with cream and ice. Classic favorite.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="MELON.jpg" alt="Grand Master Melon">
+      <div class="card-body">
+        <h3>Grand Master Melon</h3>
+        <select class="size-select">
+          <option value="120">90 ml</option>
+          <option value="240">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Blended coffee with cream and ice. Classic favorite.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="tuborgg.jpg" alt="Tuborg">
+      <div class="card-body">
+        <h3>Tuborg</h3>
+        <select class="size-select">
+          <option value="150">90 ml</option>
+          <option value="250">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Blended coffee with cream and ice. Classic favorite.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="kingfisherr.jpg" alt="Kingfisher">
+      <div class="card-body">
+        <h3>Kingfisher</h3>
+        <select class="size-select">
+          <option value="150">90 ml</option>
+          <option value="250">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Blended coffee with cream and ice. Classic favorite.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="SULAPORT1000.jpg" alt="Port Wine">
+      <div class="card-body">
+        <h3>Port Wine</h3>
+        <select class="size-select">
+          <option value="250">330 ml</option>
+          
+        </select>
+        <div class="price">₹100</div>
+        <p>Blended coffee with cream and ice. Classic favorite.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.content').forEach(section => section.classList.remove('active'));
+      document.querySelector(`.tab-button[onclick*="${tabId}"]`).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Replace select dropdowns with radio toggle buttons
+    document.querySelectorAll('#drinks .card').forEach(card => {
+      const select = card.querySelector('.size-select');
+      const priceElem = card.querySelector('.price');
+      const options = Array.from(select.options);
+      const group = document.createElement('div');
+      group.className = 'size-toggle-group';
+      const name = `size-${Math.random().toString(36).substring(2, 8)}`;
+      
+      options.forEach((opt, idx) => {
+        const id = `${name}-${idx}`;
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = name;
+        input.className = 'size-toggle';
+        input.value = opt.value;
+        input.id = id;
+        if (idx === 0) input.checked = true;
+
+        const label = document.createElement('label');
+        label.htmlFor = id;
+        label.textContent = opt.text;
+
+        group.appendChild(input);
+        group.appendChild(label);
+
+        input.addEventListener('change', function() {
+          if (this.checked) priceElem.textContent = `₹${this.value}`;
+        });
+      });
+
+      select.parentNode.insertBefore(group, select);
+      select.remove();
+
+      // Set initial price
+      const checked = group.querySelector('.size-toggle:checked');
+      if (checked) priceElem.textContent = `₹${checked.value}`;
+    });
+  </script>
+
+</body>
+</html>
+
+
+<!-- 
+     The drinks size names are already inside separate toggle buttons (radio inputs with labels) in the script.
+     If you want , 
+     you can adjust the CSS so the label looks like a button and is directly clickable.
+     The script already creates separate buttons for each size.
+     No further code is needed here.
+-->
