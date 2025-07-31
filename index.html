@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HOTEL RELAX</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
 
   <style>
@@ -31,18 +30,19 @@
     .tabs {
       display: flex;
       justify-content: center;
-      margin: 30px 0;
-      gap: 18px;
+      margin: 20px 0;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .tab-button {
-      padding: 12px 26px;
+      padding: 10px 20px;
       border: 2px solid #b8860b;
       border-radius: 50px;
       background: #f5e9c8;
       color: #3d2c13;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
       transition: all 0.3s ease;
     }
@@ -62,13 +62,24 @@
       display: none;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 10px;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
     }
 
     .content.active {
+      display: flex;
+    }
+
+    .veg-subcontent, .nonveg-subcontent {
+      display: none;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .veg-subcontent.active, .nonveg-subcontent.active {
       display: flex;
     }
 
@@ -78,6 +89,7 @@
       box-shadow: 0 6px 24px rgba(184,134,11,0.12);
       overflow: hidden;
       max-width: 300px;
+      min-width: 200px;
       display: flex;
       flex-direction: column;
       transition: 0.3s ease;
@@ -85,7 +97,7 @@
 
     .card img {
       width: 100%;
-      height: 180px;
+      height: auto;
       object-fit: cover;
       border-bottom: 2px solid #b8860b;
     }
@@ -97,7 +109,7 @@
 
     .card-body h3 {
       margin: 0 0 10px;
-      font-size: 20px;
+      font-size: 18px;
       color: #ffe082;
       font-family: 'Playfair Display', serif;
     }
@@ -105,18 +117,18 @@
     .price {
       color: #ffd700;
       font-weight: bold;
-      font-size: 17px;
+      font-size: 16px;
       margin: 8px 0;
     }
 
     .card-body p {
-      font-size: 14px;
+      font-size: 13px;
       color: #f5e9c8;
     }
 
     .size-select {
       margin-top: 10px;
-      font-size: 14px;
+      font-size: 13px;
       width: 100%;
       padding: 6px;
       border-radius: 6px;
@@ -130,64 +142,123 @@
     }
 
     .size-toggle {
-      appearance: none;
+      display: none;
+    }
+
+    .size-toggle + label {
       background: #f5e9c8;
       color: #3d2c13;
       border: 2px solid #b8860b;
       border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 14px;
+      padding: 5px 12px;
+      font-size: 12px;
       font-family: inherit;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.2s, color 0.2s;
+      user-select: none;
+      display: inline-block;
     }
 
-    .size-toggle:checked {
+    .size-toggle:checked + label {
       background: #b8860b;
       color: #fff;
       border-color: #ffe082;
     }
 
     @media (max-width: 768px) {
+      header {
+        font-size: 2rem;
+        padding: 20px;
+      }
+
+      .card {
+        width: 95%;
+        margin: auto;
+      }
+
+      .tab-button {
+        padding: 8px 14px;
+        font-size: 12px;
+      }
+
       .content {
         flex-direction: column;
         align-items: center;
       }
     }
-    .size-toggle-group {
-          display: flex;
-          gap: 8px;
-          margin-top: 10px;
-     }
-     .size-toggle {
-          display: none;
-     }
-     .size-toggle + label {
-          background: #f5e9c8;
-          color: #3d2c13;
-          border: 2px solid #b8860b;
-          border-radius: 20px;
-          padding: 6px 16px;
-          font-size: 14px;
-          font-family: inherit;
-          cursor: pointer;
-          font-weight: bold;
-          transition: background 0.2s, color 0.2s;
-          user-select: none;
-          display: inline-block;
-     }
-     .size-toggle:checked + label {
-          background: #b8860b;
-          color: #fff;
-          border-color: #ffe082;
-     }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+
+      .card {
+        width: 90%;
+      }
+
+      .tab-button {
+        padding: 6px 10px;
+        font-size: 10px;
+      }
+    }
+
+
+    .premium-search {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 2px solid #b8860b;
+    font-size: 14px;
+    outline: none;
+    background: #f5e9c8;
+    color: #3d2c13;
+    margin-left: 8px;
+    min-width: 120px;
+    transition: border 0.2s, background 0.2s;
+    height: 38px;
+    box-sizing: border-box;
+  }
+  .premium-search:focus {
+    border-color: #ffe082;
+    background: #fffbe6;
+  }
+  @media (max-width: 768px) {
+    .premium-search {
+      padding: 8px 14px;
+      font-size: 12px;
+      height: 32px;
+      min-width: 90px;
+    }
+  }
+  @media (max-width: 480px) {
+    .premium-search {
+      padding: 6px 10px;
+      font-size: 10px;
+      height: 28px;
+      min-width: 70px;
+    }
+  }
   </style>
 </head>
 <body>
 
-  <header>HOTEL RELAX BEER BAR & PERMIT ROOMS</header>
+  <header>HOTEL RELAX BEER BAR🍻 & PERMIT ROOMS🛏️</header>
 
+  <!-- Universal Search Bar -->
+  <div style="display: flex; justify-content: center; align-items: center; margin: 24px 0;">
+    <input type="text" id="universal-search" placeholder="🔍 Search menu..." class="premium-search" style="
+      padding: 10px 16px;
+      border-radius: 30px;
+      border: 2px solid #b8860b;
+      font-size: 16px;
+      outline: none;
+      background: #fffbe6;
+      color: #3d2c13;
+      min-width: 220px;
+      transition: border 0.2s;
+    ">
+  </div>
   <div class="tabs">
     <button class="tab-button active" onclick="showTab('veg')">Veg</button>
     <button class="tab-button" onclick="showTab('nonveg')">Non-Veg</button>
@@ -195,44 +266,102 @@
   </div>
 
   <div id="veg" class="content active">
-    <div class="card">
-      <img src="https://i.imgur.com/XVZNm2c.jpg" alt="Paneer Butter Masala">
-      <div class="card-body">
-        <h3>Paneer Butter Masala</h3>
-        <div class="price">₹220</div>
-        <p>Rich, creamy and mildly spiced tomato-based curry.</p>
+    <div class="tabs" style="margin-top:0; margin-bottom:20px;">
+      <button class="tab-button veg-subtab-button active" data-subtab="veg-starters" onclick="showVegSubTab('veg-starters')">Starters</button>
+      <button class="tab-button veg-subtab-button" data-subtab="veg-maincourse" onclick="showVegSubTab('veg-maincourse')">Main Course</button>
+    </div>
+    <div id="veg-starters" class="veg-subcontent active">
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Veg Spring Roll">
+        <div class="card-body">
+          <h3>Soya Lolipop</h3>
+          <select class="size-select">
+            <option value="180">Half</option>
+            <option value="320">Full</option>
+          </select>
+          <div class="price">₹180</div>
+          <p>Chunks of paneer marinated and grilled to perfection.</p>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <img src="https://i.imgur.com/tYl3Kmn.jpg" alt="Veg Biryani">
-      <div class="card-body">
-        <h3>Veg Biryani</h3>
-        <div class="price">₹180</div>
-        <p>Fragrant rice cooked with fresh veggies and spices.</p>
+    <div id="veg-maincourse" class="veg-subcontent">
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Veg Handi">
+        <div class="card-body">
+          <h3>Veg Handi</h3>
+          <select class="size-select">
+            <option value="180">Half</option>
+            <option value="320">Full</option>
+          </select>
+          <div class="price">₹180</div>
+          <p>Chunks of paneer marinated and grilled to perfection.</p>
+       </div>
       </div>
     </div>
   </div>
 
   <div id="nonveg" class="content">
-    <div class="card">
-      <img src="https://i.imgur.com/Do4lzLy.jpg" alt="Chicken Curry">
-      <div class="card-body">
-        <h3>Chicken Curry</h3>
-        <div class="price">₹260</div>
-        <p>Spicy and flavorful chicken in a traditional gravy.</p>
+    <div class="tabs" style="margin-top:0; margin-bottom:20px;">
+      <button class="tab-button nonveg-subtab-button active" data-subtab="nonveg-starters" onclick="showNonVegSubTab('nonveg-starters')">Starters</button>
+      <button class="tab-button nonveg-subtab-button" data-subtab="nonveg-maincourse" onclick="showNonVegSubTab('nonveg-maincourse')">Main Course</button>
+    </div>
+    <div id="nonveg-starters" class="nonveg-subcontent active">
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Chicken Lollipop">
+        <div class="card-body">
+          <h3>Chicken Lollipop</h3>
+          <select class="size-select">
+            <option value="220">Half</option>
+            <option value="380">Full</option>
+          </select>
+          <div class="price">₹220</div>
+          <p>Tender chicken wings marinated and deep fried to perfection.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Fish Fry">
+        <div class="card-body">
+          <h3>Fish Fry</h3>
+          <select class="size-select">
+            <option value="250">Half</option>
+            <option value="420">Full</option>
+          </select>
+          <div class="price">₹250</div>
+          <p>Fresh fish pieces marinated with spices and fried golden.</p>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <img src="https://i.imgur.com/EMiYcgo.jpg" alt="Mutton Rogan Josh">
-      <div class="card-body">
-        <h3>Mutton Rogan Josh</h3>
-        <div class="price">₹320</div>
-        <p>Kashmiri-style dish with rich red gravy and tender meat.</p>
+    <div id="nonveg-maincourse" class="nonveg-subcontent">
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Chicken Curry">
+        <div class="card-body">
+          <h3>Chicken Curry</h3>
+          <select class="size-select">
+            <option value="280">Half</option>
+            <option value="480">Full</option>
+          </select>
+          <div class="price">₹280</div>
+          <p>Traditional chicken curry cooked with aromatic spices.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Mutton Handi">
+        <div class="card-body">
+          <h3>Mutton Handi</h3>
+          <select class="size-select">
+            <option value="350">Half</option>
+            <option value="580">Full</option>
+          </select>
+          <div class="price">₹350</div>
+          <p>Tender mutton pieces slow-cooked in rich gravy.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <div id="drinks" class="content">
+    <!-- DRINKS CARDS (same as before) -->
+    <!-- Omitted for brevity -->
     <div class="card">
       <img src="royalstagg.jpg" alt="Royal Stag">
       <div class="card-body">
@@ -242,7 +371,7 @@
           <option value="260">180 ml</option>
         </select>
         <div class="price">₹90</div>
-        <p>Sweet mango yogurt drink, chilled and refreshing.</p>
+        <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
       </div>
     </div>
 
@@ -255,7 +384,7 @@
           <option value="200">180 ml</option>
         </select>
         <div class="price">₹100</div>
-        <p>Blended coffee with cream and ice. Classic favorite.</p>
+        <p>India's original dark rum - The Old Monk way.</p>
       </div>
     </div>
 
@@ -268,7 +397,7 @@
           <option value="240">180 ml</option>
         </select>
         <div class="price">₹100</div>
-        <p>Blended coffee with cream and ice. Classic favorite.</p>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
       </div>
     </div>
 
@@ -281,7 +410,7 @@
           <option value="250">180 ml</option>
         </select>
         <div class="price">₹100</div>
-        <p>Blended coffee with cream and ice. Classic favorite.</p>
+        <p>Sip the smooth taste of Tuborg, brewed for refreshment.</p>
       </div>
     </div>
 
@@ -294,81 +423,158 @@
           <option value="250">180 ml</option>
         </select>
         <div class="price">₹100</div>
-        <p>Blended coffee with cream and ice. Classic favorite.</p>
+        <p>Good times always start with a Kingfisher beer.</p>
       </div>
     </div>
 
     <div class="card">
-      <img src="SULAPORT1000.jpg" alt="Port Wine">
+      <img src="SULAPORT1000.jpg" alt="Port Wine 1000">
       <div class="card-body">
-        <h3>Port Wine</h3>
+        <h3>Port Wine 1000</h3>
         <select class="size-select">
           <option value="250">330 ml</option>
           
         </select>
         <div class="price">₹100</div>
-        <p>Blended coffee with cream and ice. Classic favorite.</p>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
       </div>
     </div>
-
   </div>
 
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.content').forEach(section => section.classList.remove('active'));
-      document.querySelector(`.tab-button[onclick*="${tabId}"]`).classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-    }
+<script>
+function showTab(tabId) {
+  document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.content').forEach(section => section.classList.remove('active'));
+  document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
 
-    // Replace select dropdowns with radio toggle buttons
-    document.querySelectorAll('#drinks .card').forEach(card => {
-      const select = card.querySelector('.size-select');
-      const priceElem = card.querySelector('.price');
-      const options = Array.from(select.options);
-      const group = document.createElement('div');
-      group.className = 'size-toggle-group';
-      const name = `size-${Math.random().toString(36).substring(2, 8)}`;
-      
-      options.forEach((opt, idx) => {
-        const id = `${name}-${idx}`;
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = name;
-        input.className = 'size-toggle';
-        input.value = opt.value;
-        input.id = id;
-        if (idx === 0) input.checked = true;
+// Updated sub-tab logic
+function showVegSubTab(subTabId) {
+  document.querySelectorAll('.veg-subtab-button').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`button[data-subtab="${subTabId}"]`).classList.add('active');
+  document.querySelectorAll('.veg-subcontent').forEach(section => section.classList.remove('active'));
+  document.getElementById(subTabId).classList.add('active');
+}
 
-        const label = document.createElement('label');
-        label.htmlFor = id;
-        label.textContent = opt.text;
+function showNonVegSubTab(subTabId) {
+  document.querySelectorAll('.nonveg-subtab-button').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`button[data-subtab="${subTabId}"]`).classList.add('active');
+  document.querySelectorAll('.nonveg-subcontent').forEach(section => section.classList.remove('active'));
+  document.getElementById(subTabId).classList.add('active');
+}
 
-        group.appendChild(input);
-        group.appendChild(label);
+// Convert select to toggle-style
+function replaceSelectWithToggles(containerSelector) {
+  document.querySelectorAll(`${containerSelector} .card`).forEach(card => {
+    const select = card.querySelector('.size-select');
+    const priceElem = card.querySelector('.price');
+    if (!select || !priceElem) return;
 
-        input.addEventListener('change', function() {
-          if (this.checked) priceElem.textContent = `₹${this.value}`;
-        });
+    const options = Array.from(select.options);
+    const group = document.createElement('div');
+    group.className = 'size-toggle-group';
+    const name = `size-${Math.random().toString(36).substring(2, 8)}`;
+
+    options.forEach((opt, idx) => {
+      const id = `${name}-${idx}`;
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = name;
+      input.className = 'size-toggle';
+      input.value = opt.value;
+      input.id = id;
+      if (idx === 0) input.checked = true;
+
+      const label = document.createElement('label');
+      label.htmlFor = id;
+      label.textContent = opt.text;
+
+      group.appendChild(input);
+      group.appendChild(label);
+
+      input.addEventListener('change', function () {
+        if (this.checked) priceElem.textContent = `₹${this.value}`;
       });
-
-      select.parentNode.insertBefore(group, select);
-      select.remove();
-
-      // Set initial price
-      const checked = group.querySelector('.size-toggle:checked');
-      if (checked) priceElem.textContent = `₹${checked.value}`;
     });
-  </script>
 
+    select.parentNode.insertBefore(group, select);
+    select.remove();
+
+    const checked = group.querySelector('.size-toggle:checked');
+    if (checked) priceElem.textContent = `₹${checked.value}`;
+  });
+}
+
+// Apply to all sections
+replaceSelectWithToggles('#drinks');
+replaceSelectWithToggles('#veg-starters');
+replaceSelectWithToggles('#veg-maincourse');
+replaceSelectWithToggles('#nonveg-starters');
+replaceSelectWithToggles('#nonveg-maincourse');
+
+// 🔥 Add listeners for veg sub-tab buttons
+// Universal search logic
+document.getElementById('universal-search').addEventListener('input', function () {
+  const query = this.value.trim().toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(query) ? '' : 'none';
+  });
+});
+
+
+
+// Universal search logic with tab switching and subtab reveal
+document.getElementById('universal-search').addEventListener('input', function () {
+  const query = this.value.trim().toLowerCase();
+  let foundInTab = null;
+  let foundInSubtab = null;
+
+  // Hide all cards initially
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = 'none';
+  });
+
+  // Search all cards, show those that match, and track their tab/subtab
+  document.querySelectorAll('.card').forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (query === '' || text.includes(query)) {
+      card.style.display = '';
+      // Find parent tab and subtab
+      let parent = card.parentElement;
+      while (parent && !parent.classList.contains('content')) {
+        if (parent.classList.contains('veg-subcontent') || parent.classList.contains('nonveg-subcontent')) {
+          foundInSubtab = parent.id;
+        }
+        parent = parent.parentElement;
+      }
+      if (parent && parent.classList.contains('content')) {
+        foundInTab = parent.id;
+      }
+    }
+  });
+
+  // If query is empty, reset to default tabs/subtabs
+  if (query === '') {
+    // Show default tab and subtab
+    showTab('veg');
+    showVegSubTab('veg-starters');
+    showNonVegSubTab('nonveg-starters');
+    document.querySelectorAll('.card').forEach(card => card.style.display = '');
+    return;
+  }
+
+  // Switch to the tab and subtab where the match was found
+  if (foundInTab) {
+    showTab(foundInTab);
+    if (foundInTab === 'veg' && foundInSubtab) showVegSubTab(foundInSubtab);
+    if (foundInTab === 'nonveg' && foundInSubtab) showNonVegSubTab(foundInSubtab);
+  }
+});
+
+</script>
+    
 </body>
 </html>
 
-
-<!-- 
-     The drinks size names are already inside separate toggle buttons (radio inputs with labels) in the script.
-     If you want , 
-     you can adjust the CSS so the label looks like a button and is directly clickable.
-     The script already creates separate buttons for each size.
-     No further code is needed here.
--->
