@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HOTEL RELAX</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+
+  <header>HOTEL RELAX BEER BAR🍻 & PERMIT ROOMS🛏️</header>
+
+  <!-- Universal Search Bar -->
+  <div style="display: flex; justify-content: center; align-items: center; margin: 24px 0;">
+    <input type="text" id="universal-search" placeholder="🔍 Search menu..." class="premium-search" style="
+      padding: 10px 16px;
+      border-radius: 30px;
+      border: 2px solid #b8860b;
+      font-size: 16px;
+      outline: none;
+      background: #fffbe6;
+      color: #3d2c13;
+      min-width: 220px;
+      transition: border 0.2s;
+    ">
+  </div>
+  <div class="tabs">
+    <button class="tab-button active" onclick="showTab('veg')">Veg</button>
+    <button class="tab-button" onclick="showTab('nonveg')">Non-Veg</button>
+    <button class="tab-button" onclick="showTab('drinks')">Drinks</button>
+  </div>
+
+  <div id="veg" class="content active">
+    <div class="tabs" style="margin-top:0; margin-bottom:20px;">
+      <button class="tab-button veg-subtab-button active" data-subtab="veg-starters" onclick="showVegSubTab('veg-starters')">Starters</button>
+      <button class="tab-button veg-subtab-button" data-subtab="veg-maincourse" onclick="showVegSubTab('veg-maincourse')">Main Course</button>
+    </div>
+    <div id="veg-starters" class="veg-subcontent active">
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Veg Spring Roll">
+        <div class="card-body">
+          <h3>Soya Lolipop</h3>
+          <select class="size-select">
+            <option value="180">Half</option>
+            <option value="320">Full</option>
+          </select>
+          <div class="price">₹180</div>
+          <p>Chunks of paneer marinated and grilled to perfection.</p>
+        </div>
+      </div>
+    </div>
+    <div id="veg-maincourse" class="veg-subcontent">
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Veg Handi">
+        <div class="card-body">
+          <h3>Veg Handi</h3>
+          <select class="size-select">
+            <option value="180">Half</option>
+            <option value="320">Full</option>
+          </select>
+          <div class="price">₹180</div>
+          <p>Chunks of paneer marinated and grilled to perfection.</p>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="nonveg" class="content">
+    <div class="tabs" style="margin-top:0; margin-bottom:20px;">
+      <button class="tab-button nonveg-subtab-button active" data-subtab="nonveg-starters" onclick="showNonVegSubTab('nonveg-starters')">Starters</button>
+      <button class="tab-button nonveg-subtab-button" data-subtab="nonveg-maincourse" onclick="showNonVegSubTab('nonveg-maincourse')">Main Course</button>
+    </div>
+    <div id="nonveg-starters" class="nonveg-subcontent active">
+      
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Chicken Lollipop">
+        <div class="card-body">
+          <h3>Chicken Lollipop</h3>
+          <select class="size-select">
+            <option value="220">Half</option>
+            <option value="380">Full</option>
+          </select>
+          <div class="price">₹220</div>
+          <p>Tender chicken wings marinated and deep fried to perfection.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Fish Fry">
+        <div class="card-body">
+          <h3>Fish Fry</h3>
+          <select class="size-select">
+            <option value="250">Half</option>
+            <option value="420">Full</option>
+          </select>
+          <div class="price">₹250</div>
+          <p>Fresh fish pieces marinated with spices and fried golden.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="nonveg-maincourse" class="nonveg-subcontent">
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Chicken Curry">
+        <div class="card-body">
+          <h3>Chicken Curry</h3>
+          <select class="size-select">
+            <option value="280">Half</option>
+            <option value="480">Full</option>
+          </select>
+          <div class="price">₹280</div>
+          <p>Traditional chicken curry cooked with aromatic spices.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://i.imgur.com/0Yv0Q7G.jpg" alt="Mutton Handi">
+        <div class="card-body">
+          <h3>Mutton Handi</h3>
+          <select class="size-select">
+            <option value="350">Half</option>
+            <option value="580">Full</option>
+          </select>
+          <div class="price">₹350</div>
+          <p>Tender mutton pieces slow-cooked in rich gravy.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="drinks" class="content">
+    <!-- DRINKS CARDS (same as before) -->
+    <!-- Omitted for brevity -->
+    <div class="tabs" style="margin-top:0; margin-bottom:20px;">
+      <button class="tab-button drinks-subtab-button active" data-subtab="drinks-whiskey" onclick="showDrinksSubTab('drinks-whiskey')">Whiskey</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-rum" onclick="showDrinksSubTab('drinks-rum')">Rum</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-beer" onclick="showDrinksSubTab('drinks-beer')">Beer</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-wine" onclick="showDrinksSubTab('drinks-wine')">Wine</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-vodka" onclick="showDrinksSubTab('drinks-vodka')">Vodka</button>
+    </div>
+
+    <div id="drinks-whiskey" class="drinks-subcontent active">
+      
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Royal Stag">
+          <div class="card-body">
+            <h3>Royal Stag</h3>
+            <select class="size-select">
+              <option value="160">90 ml</option>
+              <option value="310">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="McDowell's No.1">
+          <div class="card-body">
+            <h3>McDowell's No.1</h3>
+            <select class="size-select">
+              <option value="145">90 ml</option>
+              <option value="280">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Signature">
+          <div class="card-body">
+            <h3>Signature</h3>
+            <select class="size-select">
+              <option value="280">90 ml</option>
+              <option value="550">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Officer's Choice">
+          <div class="card-body">
+            <h3>Officer's Choice</h3>
+            <select class="size-select">
+              <option value="120">90 ml</option>
+              <option value="220">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Sterling Reserve B7">
+          <div class="card-body">
+            <h3>Sterling Reserve B7</h3>
+            <select class="size-select">
+              <option value="150">90 ml</option>
+              <option value="300">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Royal Challenge">
+          <div class="card-body">
+            <h3>Royal Challenge</h3>
+            <select class="size-select">
+              <option value="160">90 ml</option>
+              <option value="310">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Officer's Choice Blue">
+          <div class="card-body">
+            <h3>Officer's Choice Blue</h3>
+            <select class="size-select">
+              <option value="145">90 ml</option>
+              <option value="280">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Iconiq">
+          <div class="card-body">
+            <h3>Iconiq</h3>
+            <select class="size-select">
+              <option value="145">90 ml</option>
+              <option value="280">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Green Label">
+          <div class="card-body">
+            <h3>Green Label</h3>
+            <select class="size-select">
+              <option value="145">90 ml</option>
+              <option value="280">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Bagpiper">
+          <div class="card-body">
+            <h3>Bagpiper</h3>
+            <select class="size-select">
+              <option value="140">90 ml</option>
+              <option value="230">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="OakSmith Silver">
+          <div class="card-body">
+            <h3>OakSmith Silver</h3>
+            <select class="size-select">
+              <option value="180">90 ml</option>
+              <option value="350">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="OakSmith Gold">
+          <div class="card-body">
+            <h3>OakSmith Gold</h3>
+            <select class="size-select">
+              <option value="280">90 ml</option>
+              <option value="550">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Teacher's">
+          <div class="card-body">
+            <h3>Teacher's</h3>
+            <select class="size-select">
+              <option value="530">90 ml</option>
+              <option value="1000">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Royal Green">
+          <div class="card-body">
+            <h3>Royal Green</h3>
+            <select class="size-select">
+              <option value="160">90 ml</option>
+              <option value="310">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="8 PM">
+          <div class="card-body">
+            <h3>8 PM</h3>
+            <select class="size-select">
+              <option value="130">90 ml</option>
+              <option value="260">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <img src="Royalstag.jpg" alt="Blender's Pride">
+          <div class="card-body">
+            <h3>Blender's Pride</h3>
+            <select class="size-select">
+              <option value="280">90 ml</option>
+              <option value="550">180 ml</option>
+            </select>
+          <div class="price">₹90</div>
+          <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div id="drinks-rum" class="drinks-subcontent">
+
+
+      <div class="card">
+      <img src="Oldmonk.jpg" alt="McDowell's No.1 Rum">
+      <div class="card-body">
+        <h3>McDowell's No.1 Rum</h3>
+        <select class="size-select">
+          <option value="140">90 ml</option>
+          <option value="270">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>India's original dark rum - The Old Monk way.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="Oldmonk.jpg" alt="Old Monk">
+      <div class="card-body">
+        <h3>Old Monk</h3>
+        <select class="size-select">
+          <option value="145">90 ml</option>
+          <option value="280">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>India's original dark rum - The Old Monk way.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="Oldmonk.jpg" alt="Calenter">
+      <div class="card-body">
+        <h3>Calenter</h3>
+        <select class="size-select">
+          <option value="150">90 ml</option>
+          <option value="300">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>India's original dark rum - The Old Monk way.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="Oldmonk.jpg" alt="Bacardi Black">
+      <div class="card-body">
+        <h3>Bacardi Black</h3>
+        <select class="size-select">
+          <option value="160">90 ml</option>
+          <option value="310">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>India's original dark rum - The Old Monk way.</p>
+      </div>
+      </div>
+
+    </div>
+
+    <div id="drinks-beer" class="drinks-subcontent">
+
+      <div class="card">
+      <img src="Tuborg.jpg" alt="Tuborg">
+      <div class="card-body">
+        <h3>Tuborg</h3>
+        <select class="size-select">
+          <option value="160">330 ml</option>
+          <option value="250">650 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Sip the smooth taste of Tuborg, brewed for refreshment.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="Kingfisher.jpg" alt="Kingfisher">
+      <div class="card-body">
+        <h3>Kingfisher</h3>
+        <select class="size-select">
+          <option value="150">330 ml</option>
+          <option value="240">650 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Good times always start with a Kingfisher beer.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="Kingfisher.jpg" alt="Budweiser">
+      <div class="card-body">
+        <h3>Budweiser</h3>
+        <select class="size-select">
+          <option value="200">330 ml</option>
+          <option value="320">650 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Good times always start with a Kingfisher beer.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="Kingfisher.jpg" alt="HAYWARDS 2000">
+      <div class="card-body">
+        <h3>HAYWARDS 2000</h3>
+        <select class="size-select">
+          <option value="140">330 ml</option>
+          <option value="220">650 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Good times always start with a Kingfisher beer.</p>
+      </div>
+      </div>
+
+      
+      <div class="card">
+      <img src="Kingfisher.jpg" alt="Kingfisher Mild">
+      <div class="card-body">
+        <h3>Kingfisher Mild</h3>
+        <select class="size-select">
+          <option value="260">650 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Good times always start with a Kingfisher beer.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="Kingfisher.jpg" alt="Budweiser Mild">
+      <div class="card-body">
+        <h3>Budweiser Mild</h3>
+        <select class="size-select">
+          <option value="320">650 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Good times always start with a Kingfisher beer.</p>
+      </div>
+      </div>
+
+
+    </div>
+
+    <div id="drinks-wine" class="drinks-subcontent">
+
+      <div class="card">
+      <img src="SulaPort1000.jpg" alt="Port Wine 1000">
+      <div class="card-body">
+        <h3>Port Wine 1000</h3>
+        <select class="size-select">
+          <option value="250">375 ml</option>
+          <option value="500">750 ml</option>
+          
+        </select>
+        <div class="price">₹100</div>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="SulaPort1000.jpg" alt="Rio Gold Wine">
+      <div class="card-body">
+        <h3>Rio Gold Wine</h3>
+        <select class="size-select">
+          <option value="270">750 ml</option>
+          
+        </select>
+        <div class="price">₹100</div>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="SulaPort1000.jpg" alt="Rio Wine">
+      <div class="card-body">
+        <h3>Rio Wine</h3>
+        <select class="size-select">
+          <option value="180">375 ml</option>         
+        </select>
+        <div class="price">₹100</div>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="SulaPort1000.jpg" alt="Lavani Red Wine">
+      <div class="card-body">
+        <h3>Lavani Red Wine</h3>
+        <select class="size-select">
+          <option value="180">375 ml</option>       
+        </select>
+        <div class="price">₹100</div>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="SulaPort1000.jpg" alt="Lavani White Wine">
+      <div class="card-body">
+        <h3>Lavani White Wine</h3>
+        <select class="size-select">
+          <option value="180">375 ml</option>       
+        </select>
+        <div class="price">₹100</div>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="SulaPort1000.jpg" alt="Ballantine Wine">
+      <div class="card-body">
+        <h3>Ballantine Wine</h3>
+        <select class="size-select">
+          <option value="240">750 ml</option>       
+        </select>
+        <div class="price">₹100</div>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
+      </div>
+      </div>
+
+
+      <div class="card">
+      <img src="SulaPort1000.jpg" alt="Bacardi Breezer Cranberry Wine">
+      <div class="card-body">
+        <h3>Bacardi Breezer Cranberry Wine</h3>
+        <select class="size-select">
+          <option value="220">375 ml</option>       
+        </select>
+        <div class="price">₹100</div>
+        <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
+      </div>
+      </div>
+
+
+    </div>
+
+    <div id="drinks-vodka" class="drinks-subcontent">
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Grand Master Melon">
+      <div class="card-body">
+        <h3>Grand Master Melon</h3>
+        <select class="size-select">
+          <option value="190">90 ml</option>
+          <option value="380">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Grand Master Cranberry">
+      <div class="card-body">
+        <h3>Grand Master Cranberry</h3>
+        <select class="size-select">
+          <option value="190">90 ml</option>
+          <option value="380">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Grand Master Mango">
+      <div class="card-body">
+        <h3>Grand Master Mango</h3>
+        <select class="size-select">
+          <option value="190">90 ml</option>
+          <option value="380">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Magic Moments Apple">
+      <div class="card-body">
+        <h3>Magic Moments Apple</h3>
+        <select class="size-select">
+          <option value="180">90 ml</option>
+          <option value="350">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Magic Moments Regular">
+      <div class="card-body">
+        <h3>Magic Moments Regular</h3>
+        <select class="size-select">
+          <option value="180">90 ml</option>
+          <option value="350">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Romanov Regular">
+      <div class="card-body">
+        <h3>Romanov Regular</h3>
+        <select class="size-select">
+          <option value="130">90 ml</option>
+          <option value="250">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Romanov Apple">
+      <div class="card-body">
+        <h3>Romanov Apple</h3>
+        <select class="size-select">
+          <option value="130">90 ml</option>
+          <option value="250">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+      <div class="card">
+      <img src="Melon.jpg" alt="Goa Gin">
+      <div class="card-body">
+        <h3>Goa Gin</h3>
+        <select class="size-select">
+          <option value="110">90 ml</option>
+          <option value="210">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+    </div>
+    
+  </div>
+<script src="script.js"></script>    
+</body>
+</html>
+
