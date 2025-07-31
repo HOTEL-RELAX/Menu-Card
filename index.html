@@ -72,14 +72,14 @@
       display: flex;
     }
 
-    .veg-subcontent, .nonveg-subcontent {
+    .veg-subcontent, .nonveg-subcontent, .drinks-subcontent {
       display: none;
       width: 100%;
       flex-wrap: wrap;
       gap: 15px;
       justify-content: center;
     }
-    .veg-subcontent.active, .nonveg-subcontent.active {
+    .veg-subcontent.active, .nonveg-subcontent.active, .drinks-subcontent.active {
       display: flex;
     }
 
@@ -200,7 +200,7 @@
 
       .tab-button {
         padding: 6px 10px;
-        font-size: 10px;
+        font-size: 13px;
       }
     }
 
@@ -362,7 +362,17 @@
   <div id="drinks" class="content">
     <!-- DRINKS CARDS (same as before) -->
     <!-- Omitted for brevity -->
-    <div class="card">
+    <div class="tabs" style="margin-top:0; margin-bottom:20px;">
+      <button class="tab-button drinks-subtab-button active" data-subtab="drinks-whiskey" onclick="showDrinksSubTab('drinks-whiskey')">Whiskey</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-rum" onclick="showDrinksSubTab('drinks-rum')">Rum</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-beer" onclick="showDrinksSubTab('drinks-beer')">Beer</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-wine" onclick="showDrinksSubTab('drinks-wine')">Wine</button>
+      <button class="tab-button drinks-subtab-button" data-subtab="drinks-vodka" onclick="showDrinksSubTab('drinks-vodka')">Vodka</button>
+    </div>
+
+    <div id="drinks-whiskey" class="drinks-subcontent active">
+      
+      <div class="card">
       <img src="royalstagg.jpg" alt="Royal Stag">
       <div class="card-body">
         <h3>Royal Stag</h3>
@@ -373,9 +383,13 @@
         <div class="price">₹90</div>
         <p>Royal strength, smooth finish - for legendary evenings ahead.</p>
       </div>
+      </div>
+
     </div>
 
-    <div class="card">
+    <div id="drinks-rum" class="drinks-subcontent">
+
+      <div class="card">
       <img src="oldmonk.jpg" alt="Old Monk">
       <div class="card-body">
         <h3>Old Monk</h3>
@@ -386,35 +400,13 @@
         <div class="price">₹100</div>
         <p>India's original dark rum - The Old Monk way.</p>
       </div>
-    </div>
-
-    <div class="card">
-      <img src="MELON.jpg" alt="Grand Master Melon">
-      <div class="card-body">
-        <h3>Grand Master Melon</h3>
-        <select class="size-select">
-          <option value="120">90 ml</option>
-          <option value="240">180 ml</option>
-        </select>
-        <div class="price">₹100</div>
-        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
       </div>
+
     </div>
 
-    <div class="card">
-      <img src="tuborgg.jpg" alt="Tuborg">
-      <div class="card-body">
-        <h3>Tuborg</h3>
-        <select class="size-select">
-          <option value="150">90 ml</option>
-          <option value="250">180 ml</option>
-        </select>
-        <div class="price">₹100</div>
-        <p>Sip the smooth taste of Tuborg, brewed for refreshment.</p>
-      </div>
-    </div>
+    <div id="drinks-beer" class="drinks-subcontent">
 
-    <div class="card">
+      <div class="card">
       <img src="kingfisherr.jpg" alt="Kingfisher">
       <div class="card-body">
         <h3>Kingfisher</h3>
@@ -425,9 +417,27 @@
         <div class="price">₹100</div>
         <p>Good times always start with a Kingfisher beer.</p>
       </div>
+      </div>
+
+      <div class="card">
+      <img src="tuborgg.jpg" alt="Tuborg">
+      <div class="card-body">
+        <h3>Tuborg</h3>
+        <select class="size-select">
+          <option value="150">90 ml</option>
+          <option value="250">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Sip the smooth taste of Tuborg, brewed for refreshment.</p>
+      </div>
+      </div>
+
+
     </div>
 
-    <div class="card">
+    <div id="drinks-wine" class="drinks-subcontent">
+
+      <div class="card">
       <img src="SULAPORT1000.jpg" alt="Port Wine 1000">
       <div class="card-body">
         <h3>Port Wine 1000</h3>
@@ -438,7 +448,28 @@
         <div class="price">₹100</div>
         <p>Smooth, deep, and sweet - that's Port Wine 1000 magic.</p>
       </div>
+      </div>
+
+
     </div>
+
+    <div id="drinks-vodka" class="drinks-subcontent">
+
+      <div class="card">
+      <img src="MELON.jpg" alt="Grand Master Melon">
+      <div class="card-body">
+        <h3>Grand Master Melon</h3>
+        <select class="size-select">
+          <option value="120">90 ml</option>
+          <option value="240">180 ml</option>
+        </select>
+        <div class="price">₹100</div>
+        <p>Fruity twist, smooth beer - Grandmaster Melon never disappoints.</p>
+      </div>
+      </div>
+
+    </div>
+    
   </div>
 
 <script>
@@ -464,6 +495,12 @@ function showNonVegSubTab(subTabId) {
   document.getElementById(subTabId).classList.add('active');
 }
 
+function showDrinksSubTab(subTabId) {
+  document.querySelectorAll('.drinks-subtab-button').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`button[data-subtab="${subTabId}"]`).classList.add('active');
+  document.querySelectorAll('.drinks-subcontent').forEach(section => section.classList.remove('active'));
+  document.getElementById(subTabId).classList.add('active');
+}
 // Convert select to toggle-style
 function replaceSelectWithToggles(containerSelector) {
   document.querySelectorAll(`${containerSelector} .card`).forEach(card => {
@@ -512,6 +549,11 @@ replaceSelectWithToggles('#veg-starters');
 replaceSelectWithToggles('#veg-maincourse');
 replaceSelectWithToggles('#nonveg-starters');
 replaceSelectWithToggles('#nonveg-maincourse');
+replaceSelectWithToggles('#drinks-whiskey');
+replaceSelectWithToggles('#drinks-rum');
+replaceSelectWithToggles('#drinks-beer');
+replaceSelectWithToggles('#drinks-wine');
+replaceSelectWithToggles('#drinks-vodka');
 
 // 🔥 Add listeners for veg sub-tab buttons
 // Universal search logic
@@ -544,7 +586,7 @@ document.getElementById('universal-search').addEventListener('input', function (
       // Find parent tab and subtab
       let parent = card.parentElement;
       while (parent && !parent.classList.contains('content')) {
-        if (parent.classList.contains('veg-subcontent') || parent.classList.contains('nonveg-subcontent')) {
+        if (parent.classList.contains('veg-subcontent') || parent.classList.contains('nonveg-subcontent') || parent.classList.contains('drinks-subcontent')) {
           foundInSubtab = parent.id;
         }
         parent = parent.parentElement;
@@ -561,6 +603,7 @@ document.getElementById('universal-search').addEventListener('input', function (
     showTab('veg');
     showVegSubTab('veg-starters');
     showNonVegSubTab('nonveg-starters');
+    showDrinksSubTab('drinks-whiskey');
     document.querySelectorAll('.card').forEach(card => card.style.display = '');
     return;
   }
@@ -570,6 +613,7 @@ document.getElementById('universal-search').addEventListener('input', function (
     showTab(foundInTab);
     if (foundInTab === 'veg' && foundInSubtab) showVegSubTab(foundInSubtab);
     if (foundInTab === 'nonveg' && foundInSubtab) showNonVegSubTab(foundInSubtab);
+    if (foundInTab === 'drinks' && foundInSubtab) showDrinksSubTab(foundInSubtab);
   }
 });
 
